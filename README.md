@@ -1,6 +1,6 @@
 # Safe actor-critic AER/UE reproducibility package
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21515579.svg)](https://doi.org/10.5281/zenodo.21515579)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21515578.svg)](https://doi.org/10.5281/zenodo.21515578)
 
 Code and results for:
 
@@ -99,9 +99,10 @@ notes are indexed in [`docs/README.md`](docs/README.md).
 
 ## Citation and license
 
-The immutable paper-consistent release is
-[`v1.0.0`](https://github.com/SDNT8810/safe-actor-critic-aer-ue-reproducibility/releases/tag/v1.0.0),
-archived at [DOI 10.5281/zenodo.21515579](https://doi.org/10.5281/zenodo.21515579).
+The current paper-consistent release is
+[`v1.1.0`](https://github.com/SDNT8810/safe-actor-critic-aer-ue-reproducibility/releases/tag/v1.1.0).
+Zenodo's stable DOI for the release series is
+[10.5281/zenodo.21515578](https://doi.org/10.5281/zenodo.21515578).
 Machine-readable citation metadata are in [`CITATION.cff`](CITATION.cff).
 
 Code and bundled data are released under the [MIT License](LICENSE).

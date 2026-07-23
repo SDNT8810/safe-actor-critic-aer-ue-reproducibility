@@ -24,5 +24,5 @@ are used.
 Development repository:
 <https://github.com/SDNT8810/safe-actor-critic-aer-ue-reproducibility>
 
-Immutable `v1.0.0` archival release:
-<https://doi.org/10.5281/zenodo.21515579>
+Current archival release and version history:
+<https://doi.org/10.5281/zenodo.21515578>
