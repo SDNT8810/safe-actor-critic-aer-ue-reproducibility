@@ -1,7 +1,7 @@
 # Published results
 
-This directory contains the paper-consistent outputs archived in release
-`v1.0.0`. Readers do not need to inspect every file.
+This directory contains the paper-consistent outputs included with the
+reproducibility release. Readers do not need to inspect every file.
 
 ## Recommended entry points
 

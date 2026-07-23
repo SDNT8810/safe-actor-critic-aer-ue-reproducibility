@@ -1,8 +1,8 @@
 # Version 1.1.0 release notes
 
 Version 1.1.0 is the paper-consistent, reorganized reproducibility release.
-It preserves the registered evaluation and numerical results from version
-1.0.0 while making the public package substantially easier to navigate.
+It contains the complete registered evaluation and numerical results in a
+public package designed to be straightforward to navigate.
 
 ## Repository redesign
 
