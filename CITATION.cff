@@ -4,6 +4,7 @@ title: "Safe actor-critic AER/UE reproducibility package"
 type: software
 version: "1.0.0"
 date-released: "2026-07-23"
+doi: "10.5281/zenodo.21515579"
 authors:
   - family-names: "Rastegarmoghaddam"
     given-names: "Mahshad"
@@ -13,3 +14,4 @@ authors:
     given-names: "Shima"
 license: MIT
 repository-code: "https://github.com/SDNT8810/safe-actor-critic-aer-ue-reproducibility"
+url: "https://doi.org/10.5281/zenodo.21515579"

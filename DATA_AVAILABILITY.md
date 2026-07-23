@@ -24,5 +24,5 @@ are used.
 Development repository:
 <https://github.com/SDNT8810/safe-actor-critic-aer-ue-reproducibility>
 
-A permanent Zenodo DOI will be added to this file and `CITATION.cff` after the
-first tagged GitHub release is archived.
+Immutable `v1.0.0` archival release:
+<https://doi.org/10.5281/zenodo.21515579>

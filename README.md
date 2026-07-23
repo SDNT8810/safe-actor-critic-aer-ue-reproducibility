@@ -1,5 +1,7 @@
 # Safe actor-critic AER/UE reproducibility package
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21515579.svg)](https://doi.org/10.5281/zenodo.21515579)
+
 Public code, deterministic simulation data, figures, animations, and audit
 artifacts for the manuscript:
 
@@ -173,8 +175,8 @@ python postprocess_results.py --out demo_results --epochs 10 --seeds 5 --moderat
 ## License and citation
 
 The software and bundled data are released under the MIT License. Citation
-metadata are provided in `CITATION.cff`. A permanent DOI will be added after
-the GitHub release is archived with Zenodo.
+metadata are provided in `CITATION.cff`. The immutable `v1.0.0` release is
+archived by Zenodo at <https://doi.org/10.5281/zenodo.21515579>.
 
 See `DATA_AVAILABILITY.md` for the public-release scope and
 `REPRODUCIBILITY.md` for the verification procedure.
