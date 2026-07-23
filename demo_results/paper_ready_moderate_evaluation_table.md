@@ -1,0 +1,14 @@
+# Moderate perception-stress results (mean ± standard deviation across seeds)
+
+| Method | Cost ↓ | Violation rate (%) ↓ | Minimum true clearance (cm) ↑ | Minimum true uncertain-obstacle clearance (cm) ↑ | Obstacle-belief RMSE (cm) ↓ | Goal error (cm) ↓ | Goal success (%) ↑ | CBF intervention (%) ↓ | Runtime/episode (ms) ↓ |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| AC | 11.62 ± 7.35 | 0.36 ± 0.51 | 0.03 ± 0.36 | 0.03 ± 0.36 | 6.01 ± 0.53 | 4.67 ± 0.81 | **100.0 ± 0.0** | N/A | **139.61 ± 10.51** |
+| AC+CBF | 6.89 ± 0.17 | **0.00 ± 0.00** | 1.00 ± 0.69 | 1.00 ± 0.69 | 6.01 ± 0.53 | 4.44 ± 0.60 | **100.0 ± 0.0** | 18.29 ± 2.06 | 229.70 ± 12.19 |
+| AC+CBF+PER | **6.68 ± 0.20** | **0.00 ± 0.00** | 1.41 ± 1.00 | 1.41 ± 1.00 | 6.01 ± 0.53 | 4.43 ± 0.61 | **100.0 ± 0.0** | 19.07 ± 1.93 | 221.31 ± 12.57 |
+| AC+CBF+UE | 7.36 ± 0.32 | **0.00 ± 0.00** | 3.23 ± 1.13 | 3.83 ± 1.85 | 5.09 ± 0.58 | 4.52 ± 0.66 | **100.0 ± 0.0** | 27.29 ± 4.57 | 224.80 ± 17.99 |
+| AC+CBF+AER | 6.72 ± 0.15 | **0.00 ± 0.00** | 1.97 ± 0.88 | 1.97 ± 0.88 | 6.01 ± 0.53 | **4.39 ± 0.69** | **100.0 ± 0.0** | **18.21 ± 1.79** | 215.69 ± 15.70 |
+| Full | 6.94 ± 0.30 | **0.00 ± 0.00** | **3.73 ± 0.36** | **4.55 ± 1.26** | **3.44 ± 0.22** | 4.40 ± 0.75 | **100.0 ± 0.0** | 21.50 ± 3.27 | 229.91 ± 10.60 |
+
+Raw sensor-center RMSE is omitted because the raw stream is exactly identical across methods; see `sensor_fairness_audit.csv`.
+`AC` has no CBF, so its intervention rate is not applicable. All tied mean optima are bolded.
+Runtime is platform-specific and is not an algorithm-independent complexity bound.

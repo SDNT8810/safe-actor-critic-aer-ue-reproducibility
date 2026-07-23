@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Severe perception-stress results (mean $\pm$ standard deviation over five seeds). The raw sensor stream is identical across methods.}
+\label{tab:v17_1_severe_results}
+\begin{tabular}{lccccccccc}
+\toprule
+Method & Cost $\downarrow$ & Violation rate (\%) $\downarrow$ & Minimum true clearance (cm) $\uparrow$ & Minimum true uncertain-obstacle clearance (cm) $\uparrow$ & Obstacle-belief RMSE (cm) $\downarrow$ & Goal error (cm) $\downarrow$ & Goal success (\%) $\uparrow$ & CBF intervention (\%) $\downarrow$ & Runtime/episode (ms) $\downarrow$ \\
+\midrule
+AC & 46.99 $\pm$ 19.28 & 2.79 $\pm$ 1.32 & -1.76 $\pm$ 0.80 & -1.76 $\pm$ 0.80 & 16.71 $\pm$ 1.55 & \textbf{4.00 $\pm$ 0.69} & \textbf{100.0 $\pm$ 0.0} & N/A & \textbf{142.03 $\pm$ 13.87} \\
+AC+CBF & 31.00 $\pm$ 12.43 & 1.64 $\pm$ 0.86 & -1.26 $\pm$ 0.40 & -1.26 $\pm$ 0.40 & 16.71 $\pm$ 1.55 & 4.62 $\pm$ 0.69 & \textbf{100.0 $\pm$ 0.0} & 19.79 $\pm$ 4.38 & 223.44 $\pm$ 10.32 \\
+AC+CBF+PER & 39.08 $\pm$ 24.08 & 2.21 $\pm$ 1.64 & -1.04 $\pm$ 1.91 & -1.04 $\pm$ 1.91 & 16.71 $\pm$ 1.55 & 4.47 $\pm$ 0.76 & \textbf{100.0 $\pm$ 0.0} & \textbf{18.36 $\pm$ 2.38} & 220.59 $\pm$ 15.82 \\
+AC+CBF+UE & 8.96 $\pm$ 2.08 & \textbf{0.00 $\pm$ 0.00} & \textbf{3.22 $\pm$ 2.81} & 3.94 $\pm$ 3.37 & 11.08 $\pm$ 1.23 & 17.72 $\pm$ 29.14 & 80.0 $\pm$ 44.7 & 47.64 $\pm$ 28.19 & 236.34 $\pm$ 17.71 \\
+AC+CBF+AER & 22.62 $\pm$ 12.82 & 1.07 $\pm$ 0.87 & -0.35 $\pm$ 1.55 & -0.35 $\pm$ 1.55 & 16.71 $\pm$ 1.55 & 4.37 $\pm$ 0.67 & \textbf{100.0 $\pm$ 0.0} & 21.64 $\pm$ 3.66 & 217.80 $\pm$ 12.77 \\
+Full & \textbf{7.63 $\pm$ 0.44} & \textbf{0.00 $\pm$ 0.00} & 2.71 $\pm$ 0.23 & \textbf{6.95 $\pm$ 0.26} & \textbf{3.52 $\pm$ 0.55} & 4.70 $\pm$ 0.51 & \textbf{100.0 $\pm$ 0.0} & 29.14 $\pm$ 4.69 & 228.76 $\pm$ 15.32 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.99\textwidth}\footnotesize\vspace{2pt}
+AC has no CBF, so its intervention rate is N/A. Raw sensor-center RMSE is common and appears in the fairness audit.
+\end{minipage}
+\end{table*}

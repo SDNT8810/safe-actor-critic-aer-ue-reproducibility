@@ -1,0 +1,116 @@
+{
+  "benchmark_version": "V17.1",
+  "description": "Static hidden truth with one common detector stream; severity changes only perception mismatch.",
+  "nominal": {
+    "multiplier": 1.0,
+    "true_obstacles_move": false,
+    "episode_registration_bias_amplitude_m": [
+      0.01,
+      0.019
+    ],
+    "colored_noise_innovation_std_m": 0.0032,
+    "white_noise_std_m": 0.0026,
+    "sinusoidal_drift_amplitude_m": {
+      "x": 0.009,
+      "y": 0.008
+    },
+    "jump_initial_amplitude_m": [
+      0.05,
+      0.07
+    ],
+    "nominal_jump_decay_samples_including_injection": [
+      16,
+      22
+    ],
+    "nominal_jump_decay_s": [
+      0.88,
+      1.21
+    ],
+    "jump_injections_may_overlap": true,
+    "hold_onset_probability_when_inactive": 0.012,
+    "hold_duration_steps": [
+      2,
+      4
+    ],
+    "reported_detector_sigma_m": 0.01
+  },
+  "moderate": {
+    "multiplier": 2.2,
+    "true_obstacles_move": false,
+    "episode_registration_bias_amplitude_m": [
+      0.022000000000000002,
+      0.041800000000000004
+    ],
+    "colored_noise_innovation_std_m": 0.004746367031741225,
+    "white_noise_std_m": 0.0038564232132897447,
+    "sinusoidal_drift_amplitude_m": {
+      "x": 0.0198,
+      "y": 0.0176
+    },
+    "jump_initial_amplitude_m": [
+      0.11000000000000001,
+      0.15400000000000003
+    ],
+    "nominal_jump_decay_samples_including_injection": [
+      16,
+      22
+    ],
+    "nominal_jump_decay_s": [
+      0.88,
+      1.21
+    ],
+    "jump_injections_may_overlap": true,
+    "hold_onset_probability_when_inactive": 0.026400000000000003,
+    "hold_duration_steps": [
+      2,
+      4
+    ],
+    "reported_detector_sigma_m": 0.01
+  },
+  "additional_extreme": {
+    "multiplier": 6.0,
+    "true_obstacles_move": false,
+    "episode_registration_bias_amplitude_m": [
+      0.06,
+      0.11399999999999999
+    ],
+    "colored_noise_innovation_std_m": 0.007838367176906169,
+    "white_noise_std_m": 0.006368673331236262,
+    "sinusoidal_drift_amplitude_m": {
+      "x": 0.05399999999999999,
+      "y": 0.048
+    },
+    "jump_initial_amplitude_m": [
+      0.30000000000000004,
+      0.42000000000000004
+    ],
+    "nominal_jump_decay_samples_including_injection": [
+      16,
+      22
+    ],
+    "nominal_jump_decay_s": [
+      0.88,
+      1.21
+    ],
+    "jump_injections_may_overlap": true,
+    "hold_onset_probability_when_inactive": 0.055,
+    "hold_duration_steps": [
+      2,
+      4
+    ],
+    "reported_detector_sigma_m": 0.01
+  },
+  "robustness_sweep_multipliers": [
+    0.8,
+    1.0,
+    1.3,
+    1.6,
+    2.0,
+    2.2,
+    2.6,
+    3.0,
+    3.5,
+    4.0,
+    4.5
+  ]
+}

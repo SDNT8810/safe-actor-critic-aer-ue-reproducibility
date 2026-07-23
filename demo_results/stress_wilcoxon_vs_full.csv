@@ -1,0 +1,21 @@
+comparison,metric,statistic,p_value
+AC vs Full,cost,0.0,0.0625
+AC vs Full,violation_rate,0.0,0.0625
+AC vs Full,min_clearance_cm,0.0,0.0625
+AC vs Full,belief_center_rmse_cm,0.0,0.0625
+AC+CBF vs Full,cost,0.0,0.0625
+AC+CBF vs Full,violation_rate,0.0,0.0625
+AC+CBF vs Full,min_clearance_cm,0.0,0.0625
+AC+CBF vs Full,belief_center_rmse_cm,0.0,0.0625
+AC+CBF+PER vs Full,cost,1.0,0.125
+AC+CBF+PER vs Full,violation_rate,0.0,0.125
+AC+CBF+PER vs Full,min_clearance_cm,0.0,0.0625
+AC+CBF+PER vs Full,belief_center_rmse_cm,0.0,0.0625
+AC+CBF+UE vs Full,cost,3.0,0.3125
+AC+CBF+UE vs Full,violation_rate,0.0,1.0
+AC+CBF+UE vs Full,min_clearance_cm,7.0,1.0
+AC+CBF+UE vs Full,belief_center_rmse_cm,0.0,0.0625
+AC+CBF+AER vs Full,cost,1.0,0.125
+AC+CBF+AER vs Full,violation_rate,0.0,0.125
+AC+CBF+AER vs Full,min_clearance_cm,0.0,0.0625
+AC+CBF+AER vs Full,belief_center_rmse_cm,0.0,0.0625

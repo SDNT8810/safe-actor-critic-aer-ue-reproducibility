@@ -1,0 +1,5 @@
+# Preserve the exact release bytes recorded by MANIFEST.sha256.
+* -text
+*.png binary
+*.gif binary
+*.mp4 binary

@@ -1,0 +1,45 @@
+{
+  "controller_visible": [
+    "robot state",
+    "goal",
+    "known rectangle map",
+    "uncertain obstacle radii",
+    "shared raw/held obstacle-center measurement",
+    "validity bit",
+    "observable frame-to-frame jump score",
+    "method belief and sigma",
+    "observed contact after collision",
+    "nominal and executed actions"
+  ],
+  "evaluator_only": [
+    "true uncertain-obstacle centers",
+    "true signed clearance",
+    "hidden sensor fault-event label",
+    "raw/belief center error"
+  ],
+  "replay_serialized_fields": {
+    "executed_transition": [
+      "x", "y", "x_next", "y_next", "u_nom_x", "u_nom_y",
+      "u_exec_x", "u_exec_y", "instant_cost", "td_error", "td_score"
+    ],
+    "required_by_replayed_actor_update": [
+      "exploration_x", "exploration_y", "actor_waypoint_index",
+      "belief_grad_x", "belief_grad_y"
+    ],
+    "safety_and_replay": [
+      "collision_observed", "cbf_active", "cbf_estimated_h",
+      "estimated_active_constraint", "correction_norm", "safety_score",
+      "uncertainty_score", "novelty_score", "is_boundary", "is_uncertainty"
+    ],
+    "per_obstacle_controller_visible": [
+      "raw center", "belief center", "posterior sigma", "reported sigma",
+      "innovation", "outlier flag", "validity bit", "observable jump score", "radius"
+    ],
+    "metadata": [
+      "method", "seed", "episode_id", "step", "time", "train",
+      "stress", "disturbance_stress", "sensor_stream_hash"
+    ]
+  },
+  "behavior_policy_likelihood_stored": false,
+  "evaluator_truth_stored_in_replay": false
+}

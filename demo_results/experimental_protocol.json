@@ -1,0 +1,423 @@
+{
+  "benchmark_version": "V17.1",
+  "epochs": 10,
+  "seeds": 5,
+  "training_sensor_curriculum": "stress = 1.0 + 0.06 * epoch",
+  "nominal_sensor_stress": 1.0,
+  "moderate_sensor_multiplier": 2.2,
+  "additional_extreme_sensor_multiplier": 6.0,
+  "additional_extreme_is_preregistered_confirmatory_test": false,
+  "disturbance_stress": 1.0,
+  "cbf_disturbance_design_allowance_m_per_s": 0.012,
+  "stochastic_disturbance_is_hard_bounded": false,
+  "display_seed": 4,
+  "evaluation_episode_ids": {
+    "nominal": 1000,
+    "moderate": 1001,
+    "severe": 1001
+  },
+  "robustness_sweep_episode_id": 2000,
+  "robustness_sweep_levels": [
+    0.8,
+    1.0,
+    1.3,
+    1.6,
+    2.0,
+    2.2,
+    2.6,
+    3.0,
+    3.5,
+    4.0,
+    4.5
+  ],
+  "world": {
+    "width_m": 3.2,
+    "height_m": 3.2,
+    "robot_radius_m": 0.062,
+    "dt_s": 0.055,
+    "train_horizon_steps": 115,
+    "evaluation_horizon_steps": 280,
+    "evaluation_transition_horizon_s": 15.4,
+    "last_pretransition_sample_time_s": 15.345,
+    "max_speed_m_per_s": 0.72,
+    "goal_tolerance_m": 0.055,
+    "goal_success_definition": "ever enters the 0.055 m goal tolerance during the 280-transition episode"
+  },
+  "tuning_provenance": {
+    "formal_hyperparameter_search_performed": false,
+    "validation_set_used_for_parameter_selection": false,
+    "method_specific_search_performed": false,
+    "description": "One common hand-fixed engineering configuration is shared across the exploratory ablations; the values are not claimed tuned optima.",
+    "posthoc_weight_sensitivity_used_for_selection": false,
+    "posthoc_weight_sensitivity_design": "Each AER weight is perturbed one at a time by -20% or +20%, then all four weights are renormalized; five seeds are rerun at multipliers 2.2 and 6.0."
+  },
+  "dynamics_and_objective": {
+    "plant_update": "p_next = clip_workspace(p + 0.055 * (u_exec + disturbance))",
+    "cost": "0.036*||p-goal||^2 + 0.020*||u_exec||^2 + 0.012*||u_exec-u_nom||^2 + 0.036*||u_exec-u_nom|| + 5.2*I_observed_contact + max(0,0.010-known_clearance)^2",
+    "contact_is_observable_bumper_event": true,
+    "continuous_true_clearance_used_by_controller": false
+  },
+  "random_seed_formulas": {
+    "actor_initialization": "12345 + seed",
+    "sensor": "17000003 + 100003*seed + 1009*episode_id",
+    "disturbance": "19001007 + 200003*seed + 1013*episode_id",
+    "exploration": "81021 + 1000*seed + 53*episode_id",
+    "replay": "202401 + 101*seed"
+  },
+  "implementation_hyperparameters": {
+    "actor": {
+      "initial_waypoints_m": [
+        [
+          0.22,
+          2.82
+        ],
+        [
+          0.31,
+          2.43
+        ],
+        [
+          0.62,
+          2.25
+        ],
+        [
+          0.87,
+          1.99
+        ],
+        [
+          0.9,
+          1.62
+        ],
+        [
+          1.04,
+          1.27
+        ],
+        [
+          1.06,
+          0.82
+        ],
+        [
+          1.44,
+          0.7
+        ],
+        [
+          2.18,
+          0.7
+        ],
+        [
+          2.34,
+          1.14
+        ],
+        [
+          1.82,
+          1.39
+        ],
+        [
+          1.62,
+          1.58
+        ]
+      ],
+      "initial_waypoint_jitter_std_m": 0.006,
+      "exploration_std_m_per_s_per_component": 0.017,
+      "waypoint_attraction_gain": 2.25,
+      "terminal_goal_gain": 0.28,
+      "waypoint_switch_current_distance_m": 0.118,
+      "waypoint_switch_next_advantage_m": 0.03,
+      "learning_rate": 0.004,
+      "td_policy_gain": 0.18,
+      "td_clip": [
+        -2.2,
+        2.2
+      ],
+      "normalized_exploration_component_clip": [
+        -2.5,
+        2.5
+      ],
+      "auxiliary_pressure_weights_safety_uncertainty_contact": [
+        0.58,
+        0.27,
+        0.15
+      ],
+      "waypoint_smoothing_current_previous_next": [
+        0.74,
+        0.13,
+        0.13
+      ],
+      "internal_waypoint_corridor_bounds_xmin_xmax_ymin_ymax_m": [
+        [
+          0.24,
+          0.38,
+          2.31,
+          2.46
+        ],
+        [
+          0.53,
+          0.77,
+          2.1,
+          2.36
+        ],
+        [
+          0.77,
+          1.07,
+          1.84,
+          2.14
+        ],
+        [
+          0.84,
+          1.13,
+          1.52,
+          1.86
+        ],
+        [
+          0.88,
+          1.11,
+          1.16,
+          1.47
+        ],
+        [
+          0.97,
+          1.11,
+          0.73,
+          0.89
+        ],
+        [
+          1.29,
+          1.6,
+          0.65,
+          0.77
+        ],
+        [
+          2.02,
+          2.31,
+          0.65,
+          0.78
+        ],
+        [
+          2.16,
+          2.43,
+          1.0,
+          1.26
+        ],
+        [
+          1.7,
+          1.94,
+          1.33,
+          1.55
+        ]
+      ]
+    },
+    "critic": {
+      "type": "linear state-value critic",
+      "features": [
+        "1",
+        "goal_dx",
+        "goal_dy",
+        "goal_dx^2",
+        "goal_dy^2",
+        "x/3.2",
+        "y/3.2"
+      ],
+      "discount": 0.985,
+      "learning_rate": 0.016,
+      "td_clip": [
+        -2.2,
+        2.2
+      ],
+      "update_normalizer": "1 + ||features||^2"
+    },
+    "nominal_potential_fields": {
+      "known_rectangles": {
+        "extra_inflation_m": 0.022,
+        "influence_m": 0.18,
+        "gain": 0.42
+      },
+      "workspace_walls": {
+        "extra_margin_m": 0.025,
+        "influence_m": 0.14,
+        "gain": 0.34
+      },
+      "perceived_circles": {
+        "extra_inflation_m": "0.010 + 0.35*sigma",
+        "influence_m": 0.31,
+        "gain": 0.31
+      }
+    },
+    "estimator": {
+      "initial_nominal_scale_m": 0.018,
+      "initial_learned_gate_m": 0.05,
+      "reset_scale_floor_m": 0.014,
+      "default_innovation_gate_m": 0.06,
+      "base_gain_ue_full": [
+        0.24,
+        0.18
+      ],
+      "gain_denominator_floor_m": 0.035,
+      "observable_jump_threshold_non_ue_ue": [
+        0.6,
+        0.72
+      ],
+      "variance_ema_old_new": [
+        0.93,
+        0.07
+      ],
+      "posterior_sigma_rule_m": "clip(0.008 + 1.35*sqrt(var) + outlier_add, 0.014, 0.075)",
+      "outlier_add_ue_full_m": [
+        0.012,
+        0.008
+      ],
+      "episode_reset_anchor_raw_blend": [
+        0.78,
+        0.22
+      ],
+      "online_anchor_pull": "0.018 + 0.10*I_outlier",
+      "calibration_minimum_batch": 8,
+      "geometric_median_max_iterations": 50,
+      "geometric_median_tolerance": 1e-08,
+      "calibration_lower_distance_quantile": 0.6,
+      "nominal_multiplier_and_clip_m": [
+        1.45,
+        0.009,
+        0.03
+      ],
+      "gate_multiplier_and_clip_m": [
+        2.7,
+        0.03,
+        0.058
+      ],
+      "anchor_ema_old_new": [
+        0.86,
+        0.14
+      ],
+      "nominal_and_gate_ema_old_new": [
+        0.88,
+        0.12
+      ]
+    },
+    "cbf": {
+      "known_extra_inflation_m": 0.018,
+      "uncertain_robust_inflation_m": "0.009 + 1.20*sigma",
+      "candidate_ranges_known_uncertain_walls_m": [
+        0.3,
+        0.4,
+        0.26
+      ],
+      "projection_active_below_h_m": 0.2,
+      "class_k_gain": 2.9,
+      "rhs_robust_coefficient": 0.18,
+      "outer_alternating_cycles": 4,
+      "all_barrier_passes_per_cycle": 1,
+      "known_barrier_passes_before_and_after_speed_clip": [
+        2,
+        2
+      ],
+      "discrete_guard_base_m": 0.0015,
+      "discrete_guard_max_iterations": 10,
+      "final_known_barrier_passes": 3
+    },
+    "replay": {
+      "capacity": 360,
+      "batch_size": 44,
+      "batches_per_training_episode": 8,
+      "sample_without_replacement": true,
+      "priority_floor": 1e-05,
+      "aer_full_weights_td_safety_uncertainty_novelty": [
+        0.18,
+        0.39,
+        0.3,
+        0.13
+      ],
+      "sampling_exponent_aer_full": 0.78,
+      "sampling_exponent_per": 0.68,
+      "uniform_replacement": "reservoir sampling",
+      "prioritized_random_candidate_probability": 0.16,
+      "prioritized_fallback_acceptance_probability": 0.035,
+      "prioritized_default_candidate": "current minimum-priority entry",
+      "novelty_grid_m": 0.18,
+      "boundary_event_thresholds": {
+        "estimated_h_m": 0.115,
+        "correction_m_per_s": 0.02
+      },
+      "uncertainty_event_score_threshold": 0.48,
+      "td_priority_refresh_scope": "sampled entries after each critic update"
+    },
+    "sensor": {
+      "colored_ar_coefficient": 0.82,
+      "colored_innovation_std_m": "0.0032*sqrt(perception_severity)",
+      "white_jitter_std_m": "0.0026*sqrt(perception_severity)",
+      "registration_bias_range_m": "[0.010,0.019]*perception_severity",
+      "sinusoidal_amplitudes_m": "[0.009,0.008]*perception_severity",
+      "jump_range_m": "[0.050,0.070]*perception_severity",
+      "jump_decay_factor": 0.955,
+      "hold_onset_probability": "min(0.012*perception_severity,0.055)",
+      "hold_duration_steps": [
+        2,
+        4
+      ],
+      "reported_sigma_m": 0.01
+    },
+    "disturbance": {
+      "ar_coefficient": 0.9,
+      "gaussian_innovation_std_m_per_s_at_multiplier_1": 0.0018,
+      "sinusoidal_amplitudes_m_per_s": [
+        0.004,
+        0.0035
+      ],
+      "hard_bounded": false
+    }
+  },
+  "fairness": {
+    "same_map_and_hidden_truth": true,
+    "same_raw_sensor_arrays_per_seed_episode_and_severity": true,
+    "same_validity_bits": true,
+    "same_observable_jumps": true,
+    "same_exploration_draws": true,
+    "same_plant_disturbance": true,
+    "same_cost_horizon_and_seeds": true,
+    "same_replay_rng_base_seed": true,
+    "method_specific_sensor_corruption": false
+  },
+  "information_flow": {
+    "true_uncertain_centers_controller_visible": false,
+    "true_clearance_controller_visible": false,
+    "true_centers_stored_in_replay": false,
+    "critic_uses_realized_post_filter_transition": true,
+    "actor_uses_critic_td_residual": true,
+    "actor_update": "replay-weighted clipped cost-TD residual times normalized common Gaussian exploration draw",
+    "actor_update_scope": "biased off-policy score-function surrogate; no behavior-policy likelihood ratio or importance correction",
+    "actor_td_policy_gain": 0.18,
+    "actor_exploration_std_m_per_s": 0.017,
+    "exploration_vector_stored_for_replayed_actor_update": true,
+    "actor_waypoint_index_stored_for_replayed_actor_update": true,
+    "behavior_policy_likelihood_stored": false,
+    "actor_auxiliary_update": "controller-visible estimated-barrier gradient",
+    "stress_scales_only_perception": true,
+    "full_anchor_uses_true_center_labels": false,
+    "moderate_and_severe_share_episode_seed": true,
+    "robustness_sweep_uses_fixed_episode_seed_across_levels": true,
+    "stress_6_independently_preregistered": false
+  },
+  "priority_weights": {
+    "score_order": [
+      "TD",
+      "safety",
+      "uncertainty",
+      "novelty"
+    ],
+    "uniform_and_UE_only": null,
+    "PER": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "AER_and_Full": [
+      0.18,
+      0.39,
+      0.3,
+      0.13
+    ],
+    "sampling_exponent_PER": 0.68,
+    "sampling_exponent_AER_and_Full": 0.78,
+    "sample_without_replacement": true,
+    "priority_floor": 1e-05
+  }
+}

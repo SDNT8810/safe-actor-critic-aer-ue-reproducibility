@@ -1,0 +1,16 @@
+eval_type,seed,methods_present,unique_sensor_stream_hashes,raw_sensor_rmse_range_cm,sensor_hold_fraction_range,sensor_jump_mean_range,pass_identical_common_sensor
+nominal,0,6,1,0.0,0.0,0.0,1
+nominal,1,6,1,0.0,0.0,0.0,1
+nominal,2,6,1,0.0,0.0,0.0,1
+nominal,3,6,1,0.0,0.0,0.0,1
+nominal,4,6,1,0.0,0.0,0.0,1
+moderate,0,6,1,0.0,0.0,0.0,1
+moderate,1,6,1,0.0,0.0,0.0,1
+moderate,2,6,1,0.0,0.0,0.0,1
+moderate,3,6,1,0.0,0.0,0.0,1
+moderate,4,6,1,0.0,0.0,0.0,1
+stress,0,6,1,0.0,0.0,0.0,1
+stress,1,6,1,0.0,0.0,0.0,1
+stress,2,6,1,0.0,0.0,0.0,1
+stress,3,6,1,0.0,0.0,0.0,1
+stress,4,6,1,0.0,0.0,0.0,1

@@ -1,0 +1,7 @@
+method,known_static_violation_count_mean,known_static_violation_count_max,min_known_static_clearance_cm_min
+AC,0.0,0,0.0498813425681421
+AC+CBF,0.0,0,3.0704011585762467
+AC+CBF+AER,0.0,0,2.9798965522935736
+AC+CBF+PER,0.0,0,3.377400670934133
+AC+CBF+UE,0.0,0,3.048091643892617
+Full,0.0,0,2.3718642792288662

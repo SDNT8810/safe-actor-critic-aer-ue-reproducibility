@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\caption{Moderate perception-stress results (mean $\pm$ standard deviation over five seeds). The raw sensor stream is identical across methods.}
+\label{tab:v17_1_moderate_results}
+\begin{tabular}{lccccccccc}
+\toprule
+Method & Cost $\downarrow$ & Violation rate (\%) $\downarrow$ & Minimum true clearance (cm) $\uparrow$ & Minimum true uncertain-obstacle clearance (cm) $\uparrow$ & Obstacle-belief RMSE (cm) $\downarrow$ & Goal error (cm) $\downarrow$ & Goal success (\%) $\uparrow$ & CBF intervention (\%) $\downarrow$ & Runtime/episode (ms) $\downarrow$ \\
+\midrule
+AC & 11.62 $\pm$ 7.35 & 0.36 $\pm$ 0.51 & 0.03 $\pm$ 0.36 & 0.03 $\pm$ 0.36 & 6.01 $\pm$ 0.53 & 4.67 $\pm$ 0.81 & \textbf{100.0 $\pm$ 0.0} & N/A & \textbf{139.61 $\pm$ 10.51} \\
+AC+CBF & 6.89 $\pm$ 0.17 & \textbf{0.00 $\pm$ 0.00} & 1.00 $\pm$ 0.69 & 1.00 $\pm$ 0.69 & 6.01 $\pm$ 0.53 & 4.44 $\pm$ 0.60 & \textbf{100.0 $\pm$ 0.0} & 18.29 $\pm$ 2.06 & 229.70 $\pm$ 12.19 \\
+AC+CBF+PER & \textbf{6.68 $\pm$ 0.20} & \textbf{0.00 $\pm$ 0.00} & 1.41 $\pm$ 1.00 & 1.41 $\pm$ 1.00 & 6.01 $\pm$ 0.53 & 4.43 $\pm$ 0.61 & \textbf{100.0 $\pm$ 0.0} & 19.07 $\pm$ 1.93 & 221.31 $\pm$ 12.57 \\
+AC+CBF+UE & 7.36 $\pm$ 0.32 & \textbf{0.00 $\pm$ 0.00} & 3.23 $\pm$ 1.13 & 3.83 $\pm$ 1.85 & 5.09 $\pm$ 0.58 & 4.52 $\pm$ 0.66 & \textbf{100.0 $\pm$ 0.0} & 27.29 $\pm$ 4.57 & 224.80 $\pm$ 17.99 \\
+AC+CBF+AER & 6.72 $\pm$ 0.15 & \textbf{0.00 $\pm$ 0.00} & 1.97 $\pm$ 0.88 & 1.97 $\pm$ 0.88 & 6.01 $\pm$ 0.53 & \textbf{4.39 $\pm$ 0.69} & \textbf{100.0 $\pm$ 0.0} & \textbf{18.21 $\pm$ 1.79} & 215.69 $\pm$ 15.70 \\
+Full & 6.94 $\pm$ 0.30 & \textbf{0.00 $\pm$ 0.00} & \textbf{3.73 $\pm$ 0.36} & \textbf{4.55 $\pm$ 1.26} & \textbf{3.44 $\pm$ 0.22} & 4.40 $\pm$ 0.75 & \textbf{100.0 $\pm$ 0.0} & 21.50 $\pm$ 3.27 & 229.91 $\pm$ 10.60 \\
+\bottomrule
+\end{tabular}
+\begin{minipage}{0.99\textwidth}\footnotesize\vspace{2pt}
+AC has no CBF, so its intervention rate is N/A. Raw sensor-center RMSE is common and appears in the fairness audit.
+\end{minipage}
+\end{table*}
