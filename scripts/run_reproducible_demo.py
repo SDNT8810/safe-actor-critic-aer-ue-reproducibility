@@ -22,7 +22,10 @@ def main() -> None:
     ap.add_argument("--display-seed", type=int, default=4)
     ap.add_argument(
         "--display-seconds", type=float, default=10.0,
-        help="plot/animation window; does not shorten the 15.4 s evaluation horizon",
+        help=(
+            "plot/animation window; evaluation metrics use every configured "
+            "transition"
+        ),
     )
     ap.add_argument("--animate", action="store_true")
     ap.add_argument("--clean", action="store_true")

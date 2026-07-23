@@ -27,7 +27,7 @@ Usage:
       completed reproduction directory.
 
   python run.py animate [options]
-      Rebuild only the 10-second visualization from a completed reproduction.
+      Rebuild only the visualization from a completed reproduction.
 
   python run.py sensitivity [options]
       Run the separate descriptive AER-weight sensitivity diagnostic.

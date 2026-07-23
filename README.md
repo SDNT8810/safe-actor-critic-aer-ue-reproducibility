@@ -31,7 +31,7 @@ never overwritten.
 
 | If you want... | Open... |
 |---|---|
-| the corrected manuscript safety-margin figure | [`results/figures/fig03_safety_margin_over_time.png`](results/figures/fig03_safety_margin_over_time.png) |
+| the manuscript safety-margin figure | [`results/figures/fig03_safety_margin_over_time.png`](results/figures/fig03_safety_margin_over_time.png) |
 | the main numerical results | [`results/tables/paper_ready_evaluation_table.md`](results/tables/paper_ready_evaluation_table.md) |
 | the animation | [`results/animations/v17_1_shared_sensor_uncertainty_stress_seed4.mp4`](results/animations/v17_1_shared_sensor_uncertainty_stress_seed4.mp4) |
 | all published outputs | [`results/README.md`](results/README.md) |
@@ -57,18 +57,11 @@ never overwritten.
 `-- tests/                  # fairness, no-oracle, and release-contract tests
 ```
 
-## Evaluation horizon versus display window
+## Visualization and evaluation
 
-The registered evaluation always runs for 280 transitions:
-
-```text
-280 x 0.055 s = 15.4 s
-```
-
-The corrected Figure 4 safety-margin panel and animation show the informative
-first 10 seconds. The remaining 5.4 seconds are post-goal dwell and remain in
-the CSV data and all numerical metrics. Display cropping never changes the
-evaluation.
+The safety-margin figure and animation show the configured display interval.
+Numerical tables and metrics use the complete registered evaluation. The
+display option changes only plots and animations.
 
 ## Reproduction commands
 
@@ -90,7 +83,7 @@ python run.py help                            # command summary
 
 The complete rerun uses the paper settings by default: 10 training episodes,
 five seeds, moderate multiplier 2.2, exploratory extreme multiplier 6.0,
-display seed 4, and a 10-second visualization window.
+display seed 4, and the documented visualization settings.
 
 ## Scientific scope
 

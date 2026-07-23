@@ -25,9 +25,9 @@ This directory contains the paper-consistent outputs archived in release
 
 ## Time convention
 
-The evaluation CSVs retain all 280 transitions (15.4 seconds). Figure 3 and the
-animation display only the first 10 seconds because the remaining 5.4 seconds
-are post-goal dwell. No metric is computed from a shortened run.
+The safety-margin figure and animation use the configured display interval.
+Numerical tables use all transitions in the complete trajectory files; no
+metric is computed from a display-cropped run.
 
 ## Recreate these results
 

@@ -1619,9 +1619,8 @@ def make_plots(out_dir: Path, display_time_s: float = 10.0) -> None:
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.08), ncol=3, fontsize=9, frameon=True)
     _savefig(fig, figs / "fig02_full_method_trajectory.png", bottom=0.13)
 
-    # Fig. 3: true safety margins during the informative active-control interval.
-    # The registered evaluation still runs for 280 transitions (15.4 s); only
-    # the post-goal dwell tail is omitted from this visualization.
+    # Fig. 3: true safety margins over the requested display interval.
+    # Evaluation metrics use the complete stored trajectory.
     fig, ax = plt.subplots(figsize=(11.0, 5.8))
     for spec in specs:
         d = stress_t[(stress_t.method == spec.key) & (stress_t.time <= display_time_s)]

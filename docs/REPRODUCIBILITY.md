@@ -42,8 +42,8 @@ python run.py reproduce \
   --clean
 ```
 
-The evaluation horizon is always 280 transitions (15.4 seconds).
-`--display-seconds 10` affects only plots and animations.
+Evaluation metrics use every configured transition. `--display-seconds`
+changes only plots and animations.
 
 ## 4. Rebuild an existing run
 
