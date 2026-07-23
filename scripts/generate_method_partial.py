@@ -8,7 +8,8 @@ from typing import List
 
 import pandas as pd
 
-from safe_ac_static_obstacle_uncertainty_v17 import (
+from _bootstrap import ROOT
+from safe_ac_repro.simulation import (
     METHOD_ORDER, MethodState, World, clone_for_eval, method_specs, simulate_episode,
 )
 
@@ -163,7 +164,7 @@ if __name__ == "__main__":
     a = parse_args()
     root = Path(a.partial_root)
     if not root.is_absolute():
-        root = Path(__file__).resolve().parent / root
+        root = ROOT / root
     print(generate_method(
         a.method, root, a.epochs, a.seeds, a.moderate_test,
         a.stress_test, a.disturbance_stress, clean=not a.no_clean,

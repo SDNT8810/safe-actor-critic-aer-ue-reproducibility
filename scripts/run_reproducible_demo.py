@@ -5,14 +5,15 @@ import argparse
 import shutil
 from pathlib import Path
 
+from _bootstrap import ROOT
 from assemble_results import assemble
 from generate_method_partial import generate_method
-from safe_ac_static_obstacle_uncertainty_v17 import METHOD_ORDER, package_zip
+from safe_ac_repro.simulation import METHOD_ORDER, package_zip
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Run the complete V17.1 severe-sensor benchmark")
-    ap.add_argument("--out", default="demo_results")
+    ap.add_argument("--out", default="outputs/reproduction")
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--moderate-test", type=float, default=2.2, help="secondary moderate perception multiplier")
@@ -29,11 +30,10 @@ def main() -> None:
     ap.add_argument("--keep-partials", action="store_true")
     args = ap.parse_args()
 
-    root = Path(__file__).resolve().parent
     out = Path(args.out)
     if not out.is_absolute():
-        out = root / out
-    partial = root / "_partials"
+        out = ROOT / out
+    partial = ROOT / "_partials"
     if args.clean:
         if out.exists():
             shutil.rmtree(out)
@@ -47,14 +47,14 @@ def main() -> None:
             args.stress_test, args.disturbance_stress, clean=True,
         )
     assemble(
-        root, partial, out, args.epochs, args.seeds, args.moderate_test,
+        ROOT, partial, out, args.epochs, args.seeds, args.moderate_test,
         args.stress_test, args.disturbance_stress, args.display_seed,
         args.animate, clean=True, display_time_s=args.display_seconds,
     )
     if not args.keep_partials:
         shutil.rmtree(partial, ignore_errors=True)
     if args.zip:
-        print(package_zip(root))
+        print(package_zip(ROOT))
     print(f"[done] results in {out}")
 
 

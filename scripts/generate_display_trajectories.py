@@ -7,7 +7,8 @@ from typing import List
 
 import pandas as pd
 
-from safe_ac_static_obstacle_uncertainty_v17 import (
+from _bootstrap import ROOT
+from safe_ac_repro.simulation import (
     MethodState, World, clone_for_eval, method_specs, simulate_episode,
 )
 
@@ -48,7 +49,7 @@ def generate_display_trajectories(
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="demo_results")
+    ap.add_argument("--out", default="outputs/reproduction")
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--moderate-test", type=float, default=2.2)
@@ -56,9 +57,8 @@ if __name__ == "__main__":
     ap.add_argument("--disturbance-stress", type=float, default=1.0)
     ap.add_argument("--display-seed", type=int, default=4)
     a = ap.parse_args()
-    root = Path(__file__).resolve().parent
     out = Path(a.out)
-    out = out if out.is_absolute() else root / out
+    out = out if out.is_absolute() else ROOT / out
     print(generate_display_trajectories(
         out, a.epochs, a.seeds, a.moderate_test, a.stress_test,
         a.disturbance_stress, a.display_seed,

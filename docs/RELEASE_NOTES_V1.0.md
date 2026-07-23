@@ -34,4 +34,4 @@ These results are interpreted jointly and descriptively. The release does not cl
 
 ## Visualization and reproducibility
 
-The figures and MP4/GIF animation are generated from the same display-seed trajectory file. Aggregate tables use all five seeds. Run `run_demo.sh`, `run_demo.bat`, or the command in `README.md` to reproduce the included experiment. `MANIFEST.sha256` authenticates every packaged file other than the manifest itself.
+The figures and MP4/GIF animation are generated from the same display-seed trajectory file. Aggregate tables use all five seeds. From the current organized `main` branch, run `python run.py reproduce --animate` to reproduce the included experiment. `MANIFEST.sha256` authenticates every tracked file other than the manifest itself.

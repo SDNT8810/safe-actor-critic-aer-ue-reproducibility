@@ -5,7 +5,7 @@ Only the perception-stress parameter is increased. Method definitions, training 
 ## Reproduction
 
 ```bash
-python run_reproducible_demo.py --out demo_results --epochs 10 --seeds 5 --moderate-test 2.2 --stress-test 6.0 --disturbance-stress 1.0 --display-seed 4 --animate --clean
+python run.py reproduce --out outputs/reproduction --epochs 10 --seeds 5 --moderate-test 2.2 --stress-test 6.0 --disturbance-stress 1.0 --display-seed 4 --animate --clean
 ```
 
 ## Extreme detector profile

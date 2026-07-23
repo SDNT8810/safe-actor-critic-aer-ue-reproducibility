@@ -10,6 +10,7 @@ venv/
 env/
 
 _partials/
+outputs/
 manuscript_results/
 reproduction_check/
 

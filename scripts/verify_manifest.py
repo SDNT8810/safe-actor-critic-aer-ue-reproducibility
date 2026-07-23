@@ -6,8 +6,8 @@ import hashlib
 import subprocess
 from pathlib import Path
 
+from _bootstrap import ROOT
 
-ROOT = Path(__file__).resolve().parent
 MANIFEST = ROOT / "MANIFEST.sha256"
 
 

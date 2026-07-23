@@ -20,7 +20,8 @@ from typing import Dict, List, Sequence, Tuple
 import numpy as np
 import pandas as pd
 
-from safe_ac_static_obstacle_uncertainty_v17 import (
+from _bootstrap import ROOT
+from safe_ac_repro.simulation import (
     MethodState,
     ReplayBuffer,
     World,
@@ -337,18 +338,17 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--out",
-        default="demo_results",
-        help="output directory (default: demo_results beside this script)",
+        default="outputs/sensitivity",
+        help="output directory (default: outputs/sensitivity)",
     )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    root = Path(__file__).resolve().parent
     out = Path(args.out)
     if not out.is_absolute():
-        out = root / out
+        out = ROOT / out
     out.mkdir(parents=True, exist_ok=True)
 
     seed_df, aggregate_df, total_runtime = run_diagnostic()

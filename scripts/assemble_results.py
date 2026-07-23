@@ -9,9 +9,10 @@ from typing import List
 
 import pandas as pd
 
+from _bootstrap import ROOT
 from generate_method_partial import safe_name
 from generate_display_trajectories import generate_display_trajectories
-from safe_ac_static_obstacle_uncertainty_v17 import (
+from safe_ac_repro.simulation import (
     METHOD_ORDER,
     make_animation,
     make_plots,
@@ -225,7 +226,7 @@ def assemble(
 def parse_args() -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="Assemble V17.1 severe-sensor method partials")
     ap.add_argument("--partial-root", default="_partials")
-    ap.add_argument("--out", default="demo_results")
+    ap.add_argument("--out", default="outputs/reproduction")
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--moderate-test", type=float, default=2.2)
@@ -244,18 +245,17 @@ def parse_args() -> argparse.Namespace:
 
 if __name__ == "__main__":
     a = parse_args()
-    root = Path(__file__).resolve().parent
     partial = Path(a.partial_root)
     out = Path(a.out)
     if not partial.is_absolute():
-        partial = root / partial
+        partial = ROOT / partial
     if not out.is_absolute():
-        out = root / out
+        out = ROOT / out
     assemble(
-        root, partial, out, a.epochs, a.seeds, a.moderate_test,
+        ROOT, partial, out, a.epochs, a.seeds, a.moderate_test,
         a.stress_test, a.disturbance_stress, a.display_seed,
         a.animate, a.clean, a.display_seconds,
     )
     if a.zip:
-        print(package_zip(root))
+        print(package_zip(ROOT))
     print(f"[done] {out}")

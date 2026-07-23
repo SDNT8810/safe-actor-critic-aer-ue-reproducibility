@@ -2289,22 +2289,16 @@ p_t = 0.18 TD + 0.39 safety + 0.30 uncertainty + 0.13 novelty + 1e-5.
 
 Prioritized mini-batches are sampled **without replacement**. At each sequential draw, `AC+CBF+PER` uses probability proportional to `p_t**0.68`, while `AC+CBF+AER` and `Full` use probability proportional to `p_t**0.78`; the denominator is recomputed over entries not yet selected for that batch. Uniform rows sample without replacement at equal probability. Uniform insertion uses reservoir replacement. Prioritized replacement chooses a random candidate with probability `0.16` and otherwise the current minimum-priority entry; the new entry is accepted when its priority is no smaller, or with fallback probability `0.035`. Only sampled entries have their TD-dependent priority refreshed after each critic update.
 
-`demo_results/experimental_protocol.json` records the complete plant, cost, actor, critic, waypoint/corridor, potential-field, estimator, CBF, sensor, disturbance, replay, seed, and selection-provenance constants. No formal validation-set or method-specific hyperparameter search is claimed.
+`experimental_protocol.json` records the complete plant, cost, actor, critic, waypoint/corridor, potential-field, estimator, CBF, sensor, disturbance, replay, seed, and selection-provenance constants. No formal validation-set or method-specific hyperparameter search is claimed.
 
 The finite-buffer retention and sampling fractions are saved in `replay_finite_buffer_audit.csv` and `paper_ready_replay_audit_table.md`.
 
-The separate `run_posthoc_aer_weight_sensitivity.py` diagnostic perturbs each nominal AER weight by -20% and +20% one at a time, renormalizes the four weights, and reruns Full at the moderate and exploratory extreme tiers. It is descriptive and was not used for tuning or headline selection. Its aggregate and seed-level CSV/Markdown outputs are stored under `demo_results/posthoc_aer_weight_sensitivity_*`.
+The separate `python run.py sensitivity` diagnostic perturbs each nominal AER weight by -20% and +20% one at a time, renormalizes the four weights, and reruns Full at the moderate and exploratory extreme tiers. It is descriptive and was not used for tuning or headline selection. Its outputs are stored under `outputs/sensitivity/` by default.
 
 ## Reproduce the included run
 
 ```bash
-python run_reproducible_demo.py --out demo_results --epochs {epochs} --seeds {seeds} --moderate-test {moderate_test} --stress-test {stress_test} --disturbance-stress {disturbance_stress} --display-seed {display_seed} --animate --clean
-```
-
-Windows Command Prompt:
-
-```bat
-run_demo.bat
+python run.py reproduce --out outputs/reproduction --epochs {epochs} --seeds {seeds} --moderate-test {moderate_test} --stress-test {stress_test} --disturbance-stress {disturbance_stress} --display-seed {display_seed} --animate --clean
 ```
 
 ## Included moderate result
@@ -2319,23 +2313,23 @@ Interpret the severe result jointly. The intended evidence is not “every ablat
 
 ## Main outputs
 
-- `demo_results/moderate_eval_metrics.csv`
-- `demo_results/stress_eval_metrics.csv`
-- `demo_results/evaluation_trajectories_seed0.csv`
-- `demo_results/evaluation_trajectories_display_seed{display_seed}.csv`
-- `demo_results/shared_sensor_stream_severe_seed0.csv`
-- `demo_results/sensor_severity_manifest.json`
-- `demo_results/sensor_fairness_audit.csv`
-- `demo_results/oracle_invariance_audit.csv`
-- `demo_results/replay_finite_buffer_audit.csv`
-- `demo_results/robustness_sweep.csv`
-- `demo_results/robustness_sweep_collision_source_audit.csv`
-- `demo_results/paper_ready_evaluation_table.md/.tex`
-- `demo_results/paper_ready_moderate_evaluation_table.md/.tex`
-- `demo_results/figures/fig01...fig13`
-- `demo_results/animations/v17_1_shared_sensor_uncertainty_stress_seed{display_seed}.mp4`
-- `demo_results/animations/v17_1_shared_sensor_uncertainty_stress_seed{display_seed}.gif`
-- `demo_results/simulation_acceptance_audit_v17_1.md`
+- `moderate_eval_metrics.csv`
+- `stress_eval_metrics.csv`
+- `evaluation_trajectories_seed0.csv`
+- `evaluation_trajectories_display_seed{display_seed}.csv`
+- `shared_sensor_stream_severe_seed0.csv`
+- `sensor_severity_manifest.json`
+- `sensor_fairness_audit.csv`
+- `oracle_invariance_audit.csv`
+- `replay_finite_buffer_audit.csv`
+- `robustness_sweep.csv`
+- `robustness_sweep_collision_source_audit.csv`
+- `paper_ready_evaluation_table.md/.tex`
+- `paper_ready_moderate_evaluation_table.md/.tex`
+- `figures/fig01...fig13`
+- `animations/v17_1_shared_sensor_uncertainty_stress_seed{display_seed}.mp4`
+- `animations/v17_1_shared_sensor_uncertainty_stress_seed{display_seed}.gif`
+- `simulation_acceptance_audit_v17_1.md`
 
 Aggregate tables use all seeds. Display seed {display_seed} is visualization-only and is explicitly recorded in the protocol.
 
@@ -2343,13 +2337,13 @@ Aggregate tables use all seeds. Display seed {display_seed} is visualization-onl
 
 ```bash
 python -m pip install -r requirements.txt
-python -m unittest -v tests/test_shared_sensor_and_no_oracle.py
+python run.py verify
 ```
 
 ## Postprocess an existing completed run
 
 ```bash
-python postprocess_results.py --out demo_results --epochs {epochs} --seeds {seeds} --moderate-test {moderate_test} --stress-test {stress_test} --disturbance-stress {disturbance_stress} --animate
+python run.py postprocess --out outputs/reproduction --epochs {epochs} --seeds {seeds} --moderate-test {moderate_test} --stress-test {stress_test} --disturbance-stress {disturbance_stress} --animate
 ```
 """
     # Keep run-specific snapshots with their output. Do not overwrite the
@@ -2520,7 +2514,7 @@ def package_zip(root: Path, output: Optional[Path] = None) -> Path:
 
 def parse_args() -> argparse.Namespace:
     ap = argparse.ArgumentParser(description="V17.1 severe shared-sensor uncertainty benchmark")
-    ap.add_argument("--out", default="demo_results")
+    ap.add_argument("--out", default="outputs/reproduction")
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--moderate-test", type=float, default=2.2, help="secondary moderate perception multiplier")

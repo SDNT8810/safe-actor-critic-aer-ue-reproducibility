@@ -1,11 +1,16 @@
 from __future__ import annotations
 
 import copy
+import sys
 import unittest
+from pathlib import Path
 
 import numpy as np
 
-from safe_ac_static_obstacle_uncertainty_v17 import (
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from safe_ac_repro.simulation import (
     CircleObstacle,
     LinearCritic,
     MethodState,

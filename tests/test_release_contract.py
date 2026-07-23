@@ -1,16 +1,19 @@
 from __future__ import annotations
 
 import unittest
+import sys
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from safe_ac_static_obstacle_uncertainty_v17 import World
-
-
 ROOT = Path(__file__).resolve().parents[1]
-RESULTS = ROOT / "demo_results"
+sys.path.insert(0, str(ROOT / "src"))
+
+from safe_ac_repro.simulation import World
+
+
+RESULTS = ROOT / "results" / "data"
 
 
 class ReleaseContractTests(unittest.TestCase):
